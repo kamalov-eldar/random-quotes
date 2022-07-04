@@ -1,7 +1,8 @@
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { createStore, applyMiddleware, Action } from 'redux';
-import ThunkMiddleware from 'redux-thunk';
-import quotesReducer from './reducer';
+import ThunkMiddleware, { ThunkDispatch } from 'redux-thunk';
+import quotesReducer, { ActionsTypes } from './reducer';
+
 import { ThunkAction } from 'redux-thunk';//для типизации
 
 
@@ -18,5 +19,7 @@ export type InferActionsTypes<T> = T extends { [keys: string]: (...args: any[]) 
 export type BaseThunkType<A extends Action, R=void> = ThunkAction <R, AppStateType, unknown, A>
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(ThunkMiddleware)));
+
+export type DispatchType = ThunkDispatch<AppStateType, any, ActionsTypes>
 
 export default store;

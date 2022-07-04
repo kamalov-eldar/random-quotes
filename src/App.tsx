@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import QuotesContainer from './Components/QuotesContainer';
 
 function App() {

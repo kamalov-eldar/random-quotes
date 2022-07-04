@@ -18,7 +18,3 @@ let quotesList:Array<QuoteType> = [];
      }
    return  quotesList[Math.floor(Math.random() * quotesList.length) as number];
   }
-
-
-
-

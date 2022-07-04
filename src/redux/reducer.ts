@@ -1,16 +1,15 @@
 import { getRandomQuoteAPI, QuoteType } from "../api/api";
 import {  BaseThunkType, InferActionsTypes } from "./store";
+import { InitialStateType } from './types';
 
 
-let initialState = {
+let initialState:InitialStateType = {
   quote: {
-    author: "" as string,
-    quote: "" as string
+    author: "",
+    quote: ""
    },
-  color: "" as string,
+  color: "",
 };
-
- export type InitialStateType = typeof initialState
 
 const quotesReducer = (state =  initialState, action:ActionsTypes):InitialStateType => {
   console.log(' action-reducer: ',  action);

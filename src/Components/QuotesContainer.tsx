@@ -3,7 +3,7 @@ import Quote from './Quote';
 import { useDispatch, useSelector } from 'react-redux';
 import { actions, ActionsTypes, getRandomQuoteThunkCreator } from '../redux/reducer';
 import { ThunkDispatch } from 'redux-thunk';
-import { AppStateType } from '../redux/store';
+import { AppStateType, DispatchType } from '../redux/store';
 const colors = [
   '#16a085',
   '#27ae60',
@@ -21,7 +21,7 @@ const colors = [
 
 const QuotesContainer: React.FC = () => {
   //  const [color, setColor] = useState('');
-  const dispatch: ThunkDispatch<AppStateType, any, ActionsTypes> = useDispatch();
+  const dispatch: DispatchType = useDispatch();
   console.log('QuotesContainer');
 
   useEffect(() => {
@@ -29,7 +29,7 @@ const QuotesContainer: React.FC = () => {
   }, [dispatch]);
 
   const randomQuote = useSelector((state: AppStateType) => {
-    //  console.log('state: ', state);
+    console.log('state: ', state);
     return state.quote;
   });
 
@@ -41,7 +41,7 @@ const QuotesContainer: React.FC = () => {
   useEffect(() => {
     const color = Math.floor(Math.random() * colors.length);
     // setColor(colors[color]);
-  //  console.log('randomQuote.quote: ', Boolean(randomQuote.quote));
+    //  console.log('randomQuote.quote: ', Boolean(randomQuote.quote));
     // без проверки цвет меняется два раза
     if (Boolean(randomQuote.quote)) {
       dispatch(actions.setColorAC(colors[color]));
